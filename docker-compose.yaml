@@ -1,0 +1,14 @@
+services:
+
+  app:
+    image: 'eureka-server-app'
+    build: ./
+    container_name: 'eureka-server-app'
+
+    networks:
+      - db-network
+    ports:
+      - 8761:8761
+
+networks:
+  db-network:

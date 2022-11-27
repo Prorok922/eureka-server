@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: eureka-server
+
+server:
+  port: ${PORT:8761}
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    use-dns-for-fetching-service-urls: false
+    eureka-server-connect-timeout-seconds: 60
+    eureka-service-url-poll-interval-seconds: 15
+    preferSameZoneEureka: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    healthcheck:
+      enabled: true
+
+  instance:
+    hostname: my-eureka-server.com
+    lease-expiration-duration-in-seconds: 70
+    lease-renewal-interval-in-seconds: 20
+    metadataMap:
+      zone: zone_A
+  server:
+    renewal-percent-threshold: 0.85
+    enable-self-preservation: true
